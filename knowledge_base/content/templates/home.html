@@ -1,5 +1,43 @@
 {% extends "base.html" %} {% block content %}
 
-<h1>hello</h1>
+<div class="wrapper position-relative">
+  <div class="d-flex flex-column align-items-center dark-bg p-3">
+    <h1 class="white">Knowledge Base</h1>
+    <h6 class="blue-grey">Search our great database of expertise.</h6>
+    <form method="GET">
+      <div class="my-3">
+        <input
+          type="text"
+          name="search"
+          class="form-control mw-25"
+          placeholder="Search"
+          required
+        />
+      </div>
+    </form>
+  </div>
+  <div class="d-flex flex-column align-items-center p-3">
+    {% if articles %} {% for article in articles %}
+    <div class="article-container p-3 my-3">
+      <h6>{{ article.title }}</h6>
+      <div>{{ article.text }}</div>
+      <div class="text-end"><i>{{ article.author }}</i></div>
+    </div>
+    {% endfor %} {% else %} {% if not search_made %}
+    <span
+      >There are no articles yet. Click the "add" button in the lower right
+      corner to start uploading content.</span
+    >
+    {% else %}
+    <span>
+      Unfortunately there is no article whose title or text matches your
+      search.</span
+    >
+    {% endif %} {% endif %}
+  </div>
+  <a class="btn custom-btn bottom-right" href="/add" role="button">
+    <span class="bi-plus-lg"></span>&nbsp;&nbsp;Add
+  </a>
+</div>
 
 {% endblock %}

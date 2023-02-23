@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="wrapper d-flex justify-content-center align-items-center p-3">
+  <form class="standard-form text-end p-3" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name="title"
+        placeholder="Title"
+        maxlength="30"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <textarea
+        class="form-control"
+        name="text"
+        rows="10"
+        placeholder="Text"
+        required
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        name="author"
+        placeholder="Author"
+        maxlength="30"
+        required
+      />
+    </div>
+    <button type="submit" class="btn custom-btn">Save</button>
+  </form>
+</div>
+
+{% endblock %}
